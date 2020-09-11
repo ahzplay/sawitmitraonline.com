@@ -16,7 +16,7 @@ class PksController extends Controller
         $endPoint = 'api/fetch-pks';
         $response = Http::withHeaders([
             'Authorization' => 'foo',
-        ])->post(env('BACKEND_URL_LOCAL').$endPoint,
+        ])->post(env('BACKEND_URL').$endPoint,
             [
                 'page' => $request->page,
                 'rows' => $request->rows,
@@ -47,7 +47,7 @@ class PksController extends Controller
         $endPoint = 'api/create-pks';
         $response = Http::withHeaders([
             'Authorization' => 'foo',
-        ])->post(env('BACKEND_URL_LOCAL').$endPoint,
+        ])->post(env('BACKEND_URL').$endPoint,
             [
                 'agreement_number' => $request->agreement_number,
                 'pks_name' => $request->pks_name,
@@ -79,7 +79,7 @@ class PksController extends Controller
     public function getProvinces(){
         $client = new \GuzzleHttp\Client();
         $endPoint = 'api/fetch-provinces';
-        $response = $client->request('GET', env('BACKEND_URL_LOCAL').$endPoint);
+        $response = $client->request('GET', env('BACKEND_URL').$endPoint);
         $statusCode = $response->getStatusCode();
         $body = $response->getBody();
         echo $body;
@@ -90,7 +90,7 @@ class PksController extends Controller
         $endPoint = 'api/fetch-cities';
         $response = $client->request(
             'POST',
-            env('BACKEND_URL_LOCAL').$endPoint,
+            env('BACKEND_URL').$endPoint,
             ['query' => [
                 'code' => $request->code,
             ]]
@@ -105,7 +105,7 @@ class PksController extends Controller
         $endPoint = 'api/fetch-districts';
         $response = $client->request(
             'POST',
-            env('BACKEND_URL_LOCAL').$endPoint,
+            env('BACKEND_URL').$endPoint,
             ['query' => [
                 'code' => $request->code,
             ]]
@@ -120,7 +120,7 @@ class PksController extends Controller
         $endPoint = 'api/fetch-subDistricts';
         $response = $client->request(
             'POST',
-            env('BACKEND_URL_LOCAL').$endPoint,
+            env('BACKEND_URL').$endPoint,
             ['query' => [
                 'code' => $request->code,
             ]]

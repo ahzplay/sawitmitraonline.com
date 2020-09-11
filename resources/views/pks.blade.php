@@ -214,6 +214,7 @@
                 url = '{{url('/updateBrand')}}?brandId='+row.brand_id;
             }
         }
+
         function saveBrand(){
             $('#form-brand').form('submit',{
                 url: url,
