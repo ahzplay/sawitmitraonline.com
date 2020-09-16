@@ -14,5 +14,8 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         'fetch-pks',
         'create-pks',
+        'destroy-pks',
+        'fetch-tbs-prices',
+        'create-tbs-price',
     ];
 }

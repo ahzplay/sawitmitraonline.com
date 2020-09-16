@@ -18,6 +18,12 @@
     <script type="text/javascript" src="{{asset('js/jeasyui/datagrid-export.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/jeasyui/jquery.easyui.patch.js')}}"></script>
     <script type="text/javascript" src="https://www.jeasyui.com/easyui/datagrid-detailview.js"></script>
+    <script type="text/javascript" src="{{asset('js/jeasyui/jquery.edatagrid.js')}}"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
 <body>
@@ -30,12 +36,12 @@
     <a href="#" class="easyui-menubutton" data-options="menu:'#pks-menu', iconCls:'icon-search'">PKS</a>
     <a href="#" class="easyui-menubutton" data-options="menu:'#mobile-cms-menu',iconCls:'icon-tip'">Mobile CMS</a>
     <a href="#" class="easyui-linkbutton" data-options="plain:true, iconCls:'icon-reload'">Transaction</a>
-    <a href="#" class="easyui-menubutton" data-options="menu:'#mm3', iconCls:'icon-help'">Bantuan</a>
-    <a href="{{url('logout')}}" class="easyui-linkbutton" data-options="plain:true, iconCls:'icon-lock'">Keluar</a>
+    <a href="#" class="easyui-menubutton" data-options="menu:'#mm3', iconCls:'icon-help'">About</a>
+    <a href="{{url('logout')}}" class="easyui-linkbutton" data-options="plain:true, iconCls:'icon-lock'">Logout</a>
 </div>
 <div id="mobile-cms-menu" style="width:150px;">
     <div onclick="location.href='{{url('/purchase')}}'">Dashboard</div>
-    <div onclick="location.href='{{url('/sale')}}'">CPO & TBS</div>
+    <div onclick="location.href='{{url('/sale')}}'">CPO Prices</div>
     <div onclick="location.href='{{url('/sale')}}'">Articles</div>
     <div onclick="location.href='{{url('/sale')}}'">Videos</div>
     <!--<div data-options="iconCls:'icon-remove'">Delete</div>-->

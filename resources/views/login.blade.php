@@ -7,11 +7,13 @@
     <div class="container-login100">
 
         <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-            <form class="login100-form validate-form" method="post" action="{{url('')}}/api/login">
-				<span class="login100-form-title p-b-33">SAMO</span>
-                @if (Session::has('message'))
-                    <div id="alert-warning" class="alert alert-warning alert-block">
-                        <strong>{{  }}</strong>
+            <form class="login100-form validate-form" method="post" enctype="multipart/form-data" action="{{url('login-action')}}">
+                {{csrf_field()}}
+				<span class="login100-form-title p-b-33">PLAY</span>
+                @if ($message = Session::get('message'))
+                    <div id="success-alert" class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <strong>{{ $message }}</strong>
                     </div>
                 @endif
                 <input type="hidden" name="webAppFlag" value="webapp">

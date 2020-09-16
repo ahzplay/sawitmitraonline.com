@@ -17,11 +17,33 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('login-page','LoginController@index');
+Route::get('/get-price-unit', function () {
+    return json_encode(array(
+            array('id'=>1,'unit'=>'kg',),
+            array('id'=>2,'unit'=>'gr',),
+            array('id'=>3,'unit'=>'ton',))
+    );
+});
+Route::get('get-tbs-status', function () {
+    return json_encode(array(
+        array('id'=>1,'status'=>'NAIK',),
+        array('id'=>2,'status'=>'TURUN',))
+    );
+});
 
-Route::get('pks-page','PksController@index');
-Route::post('create-pks','PksController@create');
-Route::post('fetch-pks','PksController@show');
+Route::group(['middleware' => 'pageAuth'], function(){
+    Route::get('logout','LoginController@logoutAction');
+
+    Route::get('pks-page','PksController@index');
+    Route::post('create-pks','PksController@create');
+    Route::post('fetch-pks','PksController@show');
+    Route::post('destroy-pks','PksController@destroy');
+
+
+});
+
+Route::get('login-page','LoginController@index');
+Route::post('login-action','LoginController@loginAction');
 
 Route::get('fetch-provinces','PksController@getProvinces');
 Route::get('fetch-cities','PksController@getCities');
@@ -30,4 +52,6 @@ Route::get('fetch-subDistricts','PksController@getSubDistricts');
 
 
 
-Route::get('open-layer-page','PksController@openLayer');
+
+Route::post('fetch-tbs-prices','PksController@getTbsPrices');
+Route::post('create-tbs-price','PksController@createTbsPrice');
